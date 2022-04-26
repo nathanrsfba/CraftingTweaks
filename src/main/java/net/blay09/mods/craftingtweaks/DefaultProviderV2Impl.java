@@ -117,6 +117,9 @@ public class DefaultProviderV2Impl implements DefaultProviderV2 {
             if (!itemStack.isEmpty() && itemStack.getMaxStackSize() > 1) {
                 ResourceLocation registryName = itemStack.getItem().getRegistryName();
                 String key = Objects.toString(registryName);
+                if (itemStack.getTag() != null) {
+                    key = key + "@" + itemStack.getTag().toString();
+                }
                 itemMap.put(key, itemStack);
                 itemCount.add(key, itemStack.getCount());
             }
